@@ -1,0 +1,44 @@
+/**
+ * mixins, functions and variables for any hacks that should never see the light of day
+ */
+
+// mixin to assist in targeting specific browsers
+@mixin browser($browser) {
+  @if $browser == 'edge' {
+    @supports (-ms-ime-align: auto) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ie' {
+    @media screen and (min-width: 0\0) and (min-resolution: +72dpi), \0screen\,screen\9 {
+      @content;
+    }
+  }
+
+  @if $browser == 'ie-10-11' {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ie-9' {
+    @media screen and (min-width: 0\0) and (min-resolution: .001dpcm) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ff-49+' {
+    @supports (-moz-appearance: none) and (text-align-last: auto) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ch-52+' {
+    @supports (-webkit-appearance: none) and (font-variant-caps: normal) and
+      (not (-ms-accelerator: true)) and (not (overflow: -webkit-marquee)) and
+      (not (-moz-appearance: none)) {
+      @content;
+    }
+  }
+}

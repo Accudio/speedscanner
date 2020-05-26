@@ -1,0 +1,91 @@
+// variables
+$buttons: $sg-buttons;
+$button-background: $highlight-colour;
+$button-hover-background: darken($highlight-colour, 10%);
+$button-colour: $white;
+$button-font-weight: $font-bold;
+$button-font-family: inherit;
+$button-font-size: .875rem;
+$button-border-width: 1px;
+$button-border-style: solid;
+$button-border-colour: $button-background;
+$button-hover-border-colour: $button-hover-background;
+$button-border-radius: 3px;
+
+// main button styling
+%buttons {
+  appearance: none;
+  background: $button-background;
+  border: $button-border-width $button-border-style $button-border-colour;
+  border-radius: $button-border-radius;
+  color: $button-colour;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $button-font-family;
+  font-size: $button-font-size;
+  font-weight: $button-font-weight;
+  line-height: 1;
+  margin: 0;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all .1s;
+  vertical-align: middle;
+}
+
+// buttons on focus
+%buttons-focus {
+  background: $button-hover-background;
+  border: $button-border-width $button-border-style $button-hover-border-colour;
+  color: $button-colour;
+  text-decoration: none;
+}
+
+// apply styles to .button class, button element, and button-based inputs
+#{$buttons} {
+  @extend %buttons;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    @extend %buttons-focus;
+  }
+
+  .btn-fullwidth & {
+    width: 100%;
+  }
+}
+
+// button reset
+@mixin buttonreset() {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  text-decoration: none;
+  text-transform: none;
+  transform: none;
+  vertical-align: inherit;
+  width: auto;
+}
+
+.btnreset {
+  @include buttonreset();
+}

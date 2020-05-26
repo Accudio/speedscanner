@@ -1,0 +1,55 @@
+{
+  "name": "speed-scanner",
+  "version": "1.0.0",
+  "description": "Project using WebPageTest to monitor frontend performance",
+  "author": "Alistaier Shepherd <alistair@accudio.com> (https://alistairshepherd.uk/)",
+  "homepage": "https://speedscanner.org/",
+  "repository": "github:accudio/speedscanner",
+  "license": "MPL-2.0",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "cross-env NODE_ENV=production nuxt build",
+    "nuxt": "nuxt",
+    "lint": "run-p lint:*",
+    "fix": "run-p fix:*",
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:css": "stylelint '**/*.scss' '**/*.sass' '**/*.vue' --ignore-path .gitignore",
+    "fix:js": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
+    "fix:css": "stylelint '**/*.scss' '**/*.sass' '**/*.vue' --ignore-path .gitignore --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/eslint-config": "^1.1.2",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "apexcharts": "^3.15.2",
+    "cross-env": "^7.0.2",
+    "dayjs": "^1.8.19",
+    "husky": "^4.0.10",
+    "node-sass": "^4.13.1",
+    "normalize.css": "^8.0.1",
+    "npm-run-all": "^4.1.5",
+    "nuxt": "^2.0.0",
+    "prettier-eslint-cli": "^5.0.0",
+    "sass-loader": "^8.0.2",
+    "stylelint-config-sass-guidelines": "^6.2.0",
+    "vue-apexcharts": "^1.5.2",
+    "vue-feather-icons": "^5.0.0",
+    "vue-good-table": "^2.18.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^3.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "faunadb": "^2.11.1",
+    "stylelint": "^10.1.0",
+    "webpagetest": "^0.3.9"
+  }
+}

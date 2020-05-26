@@ -1,0 +1,27 @@
+/**
+ * mixins, functions and variables for typography
+ */
+
+// families
+$family-1: 'Average Sans', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+// general
+$font-size: 100%;
+$line-height: 1.64;
+
+// headings
+$h-line-height: 1.25;
+$h-size: (
+  h1: 2.25rem,
+  h2: 1.875rem,
+  h3: 1.5rem,
+  h4: 1.125rem,
+  h5: 1rem
+);
+
+// weights
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-bold: 700;
+$font-black: 900;

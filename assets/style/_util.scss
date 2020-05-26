@@ -1,0 +1,97 @@
+/**
+ * mixins, functions and variables for utilities, eg media helpers
+ */
+
+// breakpoints
+$break: (
+  small:  576px,
+  medium: 768px,
+  large:  992px,
+  nav:   992px,
+  xlarge: 1200px
+);
+
+// generate min-width media query
+@mixin min-width($min-breakpoint, $min-breakpoints: $break) {
+  // If $mq-breakpoint is a key that exists in $mq-breakpoints, get and use the value
+  @if map-has-key($min-breakpoints, $min-breakpoint) {
+    $min-breakpoint: map-get($min-breakpoints, $min-breakpoint);
+  }
+  @media screen and (min-width: #{$min-breakpoint}) {
+    @content;
+  }
+}
+
+// generate max-width media query
+@mixin max-width($max-breakpoint, $max-breakpoints: $break) {
+  // If $mq-breakpoint is a key that exists in $mq-breakpoints, get and use the value
+  @if map-has-key($max-breakpoints, $max-breakpoint) {
+    $max-breakpoint: map-get($max-breakpoints, $max-breakpoint);
+  }
+  @media screen and (max-width: #{$max-breakpoint - 1}) {
+    @content;
+  }
+}
+
+// get breakpoint
+@function break-get($breakpoint, $is-max: false, $breakpoints: $break) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint: map-get($breakpoints, $breakpoint);
+  }
+  @if $is-max {
+    $breakpoint: #{$breakpoint - 1};
+  }
+  @return $breakpoint;
+}
+
+// clearfix
+@mixin clearfix() {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+// screen reader text
+@mixin sr-text() {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+
+  &:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+  }
+}
+
+// center child using flexbox
+@mixin flex-center() {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

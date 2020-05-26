@@ -1,0 +1,39 @@
+/**
+ * mixins, functions and variables for structure
+ */
+
+$sidebar-width: 300px;
+$header-height: 60px;
+$border-radius: 5px;
+
+// object fit with fallback
+@mixin object-fit-parent() {
+  overflow: hidden;
+  position: relative;
+}
+
+@mixin object-fit($is-absolute: false) {
+  height: auto;
+  left: 50%;
+  max-width: none;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+
+  @supports (object-fit: cover) {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    top: auto;
+    transform: none;
+    width: 100%;
+
+    @if ($is-absolute == false) {
+      position: static;
+    }
+  }
+}

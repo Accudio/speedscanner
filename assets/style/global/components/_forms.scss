@@ -1,0 +1,151 @@
+// variables
+$forms: $sg-forms;
+$form-colour: $body-text;
+$input-background: $white;
+$placeholder: $body-text;
+
+// custom checkbox
+@mixin custom-checkbox(
+  $selector: 'label',
+  $box-size: 1.1em,
+  $colour: $body-text,
+  $primary-colour: $colour
+) {
+  > input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+
+    &:checked + #{$selector} {
+      color: $body-text;
+
+      &::after {
+        transform: scale(1) rotate(-45deg);
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  > #{$selector} {
+    @content;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: calc(7px + #{$box-size});
+    position: relative;
+    transition: all .1s;
+
+    &::before {
+      background: $white;
+      border: 1px solid $colour;
+      border-radius: calc(3px + .05em);
+      content: '';
+      display: inline-block;
+      font-size: $box-size;
+      height: calc(3px + .8em);
+      left: 0;
+      position: absolute;
+      transition: all .1s;
+      vertical-align: middle;
+      width: calc(3px + .8em);
+    }
+
+    &::after {
+      border-bottom: calc(2px + .07em) solid $colour;
+      border-left: calc(2px + .07em) solid $colour;
+      content: '';
+      font-size: $box-size;
+      height: calc(3px + .22em);
+      left: calc(.25em - 1px);
+      position: absolute;
+      top: calc(.25em - 1px);
+      transform: scale(0) rotate(-45deg);
+      transition: all .1s;
+      width: calc(5px + .32em);
+    }
+  }
+}
+
+// all input fields (except buttons and checkbox)
+%forms {
+  background: $input-background;
+  border: 0;
+  color: $body-text;
+  display: block;
+  font-family: $family-1;
+  font-size: .875rem;
+  font-weight: $font-medium;
+  line-height: 1;
+  margin-bottom: .5rem;
+  max-width: 100%;
+  outline: none;
+  padding: .75rem 1.25rem;
+  transition: all .2s;
+  width: 100%;
+
+  @include max-width(medium) {
+    font-size: 1.125rem;
+  }
+}
+
+// fields on focus
+%forms-focus {
+  &::placeholder {
+    opacity: .6;
+  }
+}
+
+%forms-placeholder {
+  color: $placeholder;
+  opacity: .8;
+  transition: all .1s;
+}
+
+#{$forms} {
+  @extend %forms;
+
+  &::placeholder {
+    @extend %forms-placeholder;
+  }
+
+  &:focus,
+  &:active {
+    @extend %forms-focus;
+  }
+}
+
+textarea {
+  height: auto;
+  overflow: auto;
+}
+
+fieldset {
+  border: 0;
+  border-radius: 5px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 .5rem;
+}
+
+input[type='range'] {
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin: 1rem 0 .5rem;
+  max-width: 100%;
+}
+
+select {
+  background: none;
+  border: 0;
+  color: currentColor;
+}

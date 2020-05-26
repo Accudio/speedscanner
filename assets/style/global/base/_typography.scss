@@ -1,0 +1,70 @@
+/**
+ * typography global style rules
+ */
+
+html {
+  font-size: $font-size;
+}
+
+html, body {
+  font-family: $family-1;
+  font-weight: $font-normal;
+  line-height: $line-height;
+}
+
+body {
+  color: $body-text;
+}
+
+a, a:visited {
+  color: currentColor;
+  text-decoration: none;
+  transition: all .1s;
+
+  &:hover, &:active, &:focus {
+    color: currentColor;
+    text-decoration: none;
+  }
+}
+
+p a {
+  &:hover, &:active, &:focus {
+    text-decoration: underline;
+  }
+}
+
+// headings
+#{$sg-headings} {
+  color: $heading-text;
+  font-weight: $font-bold;
+  line-height: $h-line-height;
+  margin: 0 0 1.5rem;
+
+  &:not(:first-child) {
+    margin: 1.5rem 0;
+  }
+
+  &:only-child {
+    margin: 0;
+  }
+
+  em {
+    font-style: normal;
+    font-weight: $font-light;
+  }
+}
+
+// increased margin on additional headings
+h1:not(:first-child), h2:not(:first-child), h3:not(:first-child) {
+  margin-top: 2rem;
+
+  @include min-width(medium) {
+    margin-top: 2.5rem;
+  }
+}
+
+@each $heading in $sg-headings {
+  #{$heading} {
+    font-size: map-get($map: $h-size, $key: $heading);
+  }
+}

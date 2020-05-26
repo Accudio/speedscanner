@@ -1,0 +1,180 @@
+/**
+ * general global style rules
+ */
+
+$scrollbar-bg: $main-bg;
+$scrollbar-thumb: $highlight-colour;
+$scrollbar-width: 11px;
+
+* {
+  box-sizing: border-box;
+  scrollbar-color: $scrollbar-thumb $scrollbar-bg;
+
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    height: $scrollbar-width;
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $scrollbar-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb;
+    border: 3px solid $scrollbar-bg;
+    border-radius: 6px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  &.v--modal-block-scroll {
+    .cfm {
+      padding-right: var(--scrollbar-width, #{$scrollbar-width});
+    }
+  }
+}
+
+p, ol, ul, dl, table {
+  margin: 0 0 1.5rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul li ul, ol li ol {
+  margin-bottom: 0;
+}
+
+// rule
+hr {
+  border: 0;
+  border-top: 1px solid $body-text;
+  height: 0;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+[hidden], .d-none {
+  display: none;
+}
+
+blockquote {
+  border-left: 16px solid #f0f0f0;
+  margin: 0 0 1.5rem;
+  padding: 0 1.5rem;
+
+  cite {
+    display: block;
+    font-style: italic;
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+}
+
+pre {
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  color: $body-text;
+  font-family: Menlo, monospace;
+  font-size: .9rem;
+  margin: 0 0 1.5rem;
+  padding: 1rem;
+  tab-size: 2;
+
+  code {
+    font-family: Menlo, monospace;
+    line-height: 1.2;
+  }
+}
+
+:not(pre)>code {
+  background: transparent;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  color: $body-text;
+  font-family: Menlo, monospace;
+  font-size: .9rem;
+  padding: 0 .2rem;
+}
+
+kbd {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba($black, .2), 0 0 0 2px $white inset;
+  color: #333;
+  display: inline-block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .8em;
+  line-height: 1.4;
+  margin: 0 .1em;
+  padding: .1em .6em;
+  text-shadow: 0 1px 0 $white;
+}
+
+// tables
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 0 .5rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+// Extra border underneath header
+thead th {
+  border-bottom: 2px solid #dedede;
+}
+
+// Extra border above footer
+tfoot th {
+  border-top: 2px solid #dedede;
+}
+
+td {
+  border-bottom: 1px solid #dedede;
+}
+
+th, td {
+  padding: .5rem;
+  text-align: left;
+}
+
+caption {
+  caption-side: bottom;
+  color: #ababab;
+  padding: 1rem 0;
+}
+
+.striped-table tbody tr:nth-child(odd) {
+  background-color: #f8f8f8;
+}
+
+// Container for responsive tables
+.contain-table {
+  overflow-x: auto;
+
+  @include min-width(medium) {
+    width: 100%;
+  }
+}
+
+.sr-text, .sr-only {
+  @include sr-text;
+}

@@ -1,0 +1,58 @@
+/**
+ * Reusable colours
+ */
+
+$card-radius: 5px;
+$card-bg: $white;
+$card-border: 1px solid $layout-border;
+$card-padding: 1.25rem 2rem;
+
+.o-card {
+  background: $card-bg;
+  border: $card-border;
+  border-radius: $card-radius;
+  box-shadow: 1px 1px 6px 0 rgba($black, .16);
+  max-width: 100%;
+  max-width: 100%;
+  padding: $card-padding;
+  position: relative;
+  scrollbar-color: $scrollbar-thumb $white;
+
+  &--noPadding {
+    padding: 0;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $white;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-color: $white;
+  }
+}
+
+.o-cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -7px;
+
+  &__item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 7px;
+
+    &--2 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+
+  .o-card {
+    height: 100%;
+    margin-bottom: 0;
+  }
+}

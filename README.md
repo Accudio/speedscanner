@@ -1,5 +1,20 @@
 # Speed Scanner
 
+> :warning: Due to changes to the [WebPageTest API](https://blog.webpagetest.org/posts/the-webpagetest-api-has-gone-public/), Speed Scanner no longer has a place in continuous frontend synthetic testing. This project has been archived, please more to an alternative solution.
+
+Unfortunately due to the new pricing of the WebPageTest API, Speed Scanner no longer is a good option for front-end performance monitoring. Although it will still work with the WPT API, the cost of that API means you should probably be looking at using an alternative, more polished service like those listed below.
+
+In future I hope to see whether there is any way that a project like Speed Scanner can exist, and if so perhaps work on Speed Scanner 2. For the moment however, I will be retiring my Speed Scanner instances or replacing them with Speedlify as listed below.
+
+## Alternatives to Speed Scanner
+
+- [Speedlify](https://www.speedlify.dev) — Open-source performance monitoring tool that can be run and deployed on hosts like Netlify, Vercel and Github Pages. Can be free depending on usage.
+- [Calibre](https://calibreapp.com/) — Synthetic monitoring that is really polished and at a reasonable price. They have a fantastic performance-realted newsletter and really seem to know what they're doing.
+- [SpeedCurve](https://speedcurve.com/) — Synthetic and RUM monitoring, a bit more expensive than Calibre but also very well-regarded.
+
+---
+## Previous readme for posterity
+
 Set of functions and frontend for automating and visualising [WebPageTest](https://www.webpagetest.org/) data.
 
 Synthetic web page testing testing tools like [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/) and WebPageTest can provide incredibly useful insight into the performance of websites for any web developer. Despite a huge number of backend performance monitoring tools, there are few frontend performance monitoring tools. Among several others, [SpeedCurve](https://speedcurve.com/) and [Calibre](https://calibreapp.com/) provide this service but can prove to be expensive and over-complicated.
@@ -10,7 +25,7 @@ Whatever your need, SpeedScanner can help you easily monitor the performance of 
 
 [Demo](https://demo.speedscanner.org/)
 
-## Specifications
+### Specifications
 
 - [WebPageTest](https://www.webpagetest.org/) — running tests
 - [Netlify Functions](https://www.netlify.com/) — triggering, getting and setting of test data
@@ -18,7 +33,7 @@ Whatever your need, SpeedScanner can help you easily monitor the performance of 
 - [Nuxt](https://nuxtjs.org/) — frontend SPA interface
 - Cron solution like [Zapier](https://zapier.com/home) or [IFTTT](https://ifttt.com/) or a machine with a cron job to regularly trigger tests
 
-## Requirements
+### Requirements
 
 You will need the following **free** services to use Speed Scanner. Alternatives are available, but they will likely require changes to functions.
 
@@ -27,9 +42,9 @@ You will need the following **free** services to use Speed Scanner. Alternatives
 - FaunaDB account
 - IFTTT account
 
-## Installation
+### Installation
 
-### I. FaunaDB Database
+#### I. FaunaDB Database
 
 1. Create database, no particular name necessary.
 2. Create an API key from "Security" with "Server" role.
@@ -51,7 +66,7 @@ You will need the following **free** services to use Speed Scanner. Alternatives
 }
 ```
 
-### II. Functions and Interface
+#### II. Functions and Interface
 
 1. Fork this repository into your own GitHub account or organisation.
 2. In Netlify, create a New Site from Git.
@@ -71,23 +86,23 @@ FORCE_KEY     custom secret string, recommended randomised 30-50char
 7. By default a random URL is created, you can customise this in Settings.
 8. Once deployed, trigger the first tests by navigating to yourdomain.netlify.com/.netlify/functions/trigger
 
-### III. 'Cron' job
+#### III. 'Cron' job
 
 This simply needs to be an hourly GET request to yourdomain.netlify.com/.netlify/functions/trigger. To keep with serverless metholody you could use IFTTT or Zapier among others, or you could set up a cron job with curl/wget. The demo above uses an IFTTT applet with a trigger of "Time" and task of "Webhook", that fires a GET requst to the configured address every hour.
 
 If a test is due to run it will be triggered, otherwise it will return with 200 with a message including the next allowed run time.
 
-### IV. Customisation (optional)
+#### IV. Customisation (optional)
 
 1. Install dependencies with `npm install`
 2. Install netlify dev cli with ```npm install netlify-cli -g```
 3. Run with ```netlify dev```
 
-## Changelog
+### Changelog
 
 - v1.0.0  - Initial stable release with flattened history
 
-## Credits
+### Credits
 
 Speed Scanner has been developed by the following contributors:
 
@@ -95,7 +110,7 @@ Speed Scanner has been developed by the following contributors:
 
 If you would like to support this project then please consider contributing if you can. Alternatively, spread the word about Speed Scanner and the importance of frontend performance!
 
-## License
+### License
 
 This project is licensed under the MPLv2.0 license.
 
